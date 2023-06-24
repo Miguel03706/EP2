@@ -1,0 +1,343 @@
+ATENCAO: Nem todas as caracteristicas do enunciado sao testadas neste exemplo.
+         Cabe a cada aluno(a) testar cuidadosamente seu EP.
+
+*** Criando alunos *******************************************
+*** Criando turmas **************************************
+*** Criando um curso *******************************************
+
+###################################################################################
+Imprimindo informacoes do curso.
+Ha 0 alunos(s) neste curso.
+
+Ha 0 turmas(s) neste curso.
+###################################################################################
+*** Inserindo alunos no curso *******************************************
+1. OK
+2. OK
+3. OK
+4. OK
+5. OK
+6. OK
+7. OK
+
+###################################################################################
+Imprimindo informacoes do curso.
+Ha 5 alunos(s) neste curso.
+Aluno: Aluno A	nusp: 22222
+Aluno: Aluno B	nusp: 33333
+Aluno: Aluno C	nusp: 44444
+Aluno: Aluno D	nusp: 55555
+Aluno: Aluno E	nusp: 66666
+
+Ha 0 turmas(s) neste curso.
+###################################################################################
+*** Inserindo turmas no curso *******************************************
+8. OK
+9. OK
+10. OK
+11. OK
+12. OK
+13. OK
+14. OK
+
+###################################################################################
+Imprimindo informacoes do curso.
+Ha 5 alunos(s) neste curso.
+Aluno: Aluno A	nusp: 22222
+Aluno: Aluno B	nusp: 33333
+Aluno: Aluno C	nusp: 44444
+Aluno: Aluno D	nusp: 55555
+Aluno: Aluno E	nusp: 66666
+
+Ha 6 turmas(s) neste curso.
+Turma: Introducao a Programacao	vagas: 3	matriculados: 0
+Turma: Introducao a Analise de Algoritmos	vagas: 4	matriculados: 0
+Turma: Algoritmos e Estruturas de Dados I	vagas: 5	matriculados: 0
+Turma: Algoritmos e Estruturas de Dados II	vagas: 6	matriculados: 0
+Turma: Inteligencia Artificial	vagas: 7	matriculados: 0
+Turma: Algoritmos e Estruturas de Dados I	vagas: 8	matriculados: 0
+###################################################################################
+
+###################################################################################
+Imprimindo informacoes de todos os turmas do curso.
+Ha 5 alunos(s) neste curso.
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: M
+Turmas cursadas: 0
+**************************************************************
+Imprimindo informacoes do aluno: 33333 - Aluno B.
+Status: M
+Turmas cursadas: 0
+**************************************************************
+Imprimindo informacoes do aluno: 44444 - Aluno C.
+Status: M
+Turmas cursadas: 0
+**************************************************************
+Imprimindo informacoes do aluno: 55555 - Aluno D.
+Status: M
+Turmas cursadas: 0
+**************************************************************
+Imprimindo informacoes do aluno: 66666 - Aluno E.
+Status: M
+Turmas cursadas: 0
+###################################################################################
+
+###################################################################################
+Imprimindo informacoes de todos as turmas do curso.
+Ha 6 turma(s) neste curso.
+**************************************************************
+Imprimindo informacoes da turma: 2001 - Introducao a Programacao.
+A turma contem 3 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2002 - Introducao a Analise de Algoritmos.
+A turma contem 4 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2023 - Algoritmos e Estruturas de Dados I.
+A turma contem 5 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2024 - Algoritmos e Estruturas de Dados II.
+A turma contem 6 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2016 - Inteligencia Artificial.
+A turma contem 7 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2023 - Algoritmos e Estruturas de Dados I.
+A turma contem 8 vagas e 0 alunos:
+###################################################################################
+
+
+*** Matriculando alunos nas turmas **************************************
+15. OK
+16. OK
+17. OK
+18. OK
+19. OK
+20. OK
+21. OK
+22. OK
+
+###################################################################################
+Imprimindo informacoes do curso.
+Ha 5 alunos(s) neste curso.
+Aluno: Aluno A	nusp: 22222
+Aluno: Aluno B	nusp: 33333
+Aluno: Aluno C	nusp: 44444
+Aluno: Aluno D	nusp: 55555
+Aluno: Aluno E	nusp: 66666
+
+Ha 6 turmas(s) neste curso.
+Turma: Introducao a Programacao	vagas: 3	matriculados: 3
+Turma: Introducao a Analise de Algoritmos	vagas: 4	matriculados: 2
+Turma: Algoritmos e Estruturas de Dados I	vagas: 5	matriculados: 1
+Turma: Algoritmos e Estruturas de Dados II	vagas: 6	matriculados: 0
+Turma: Inteligencia Artificial	vagas: 7	matriculados: 0
+Turma: Algoritmos e Estruturas de Dados I	vagas: 8	matriculados: 0
+###################################################################################
+
+###################################################################################
+Imprimindo informacoes de todos os turmas do curso.
+Ha 5 alunos(s) neste curso.
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: M
+Turmas cursadas: 3
+	Disciplina: Introducao a Programacao, Nota: 0, Frequencia: 0, Status: M
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 0, Frequencia: 0, Status: M
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 0, Frequencia: 0, Status: M
+**************************************************************
+Imprimindo informacoes do aluno: 33333 - Aluno B.
+Status: M
+Turmas cursadas: 2
+	Disciplina: Introducao a Programacao, Nota: 0, Frequencia: 0, Status: M
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 0, Frequencia: 0, Status: M
+**************************************************************
+Imprimindo informacoes do aluno: 44444 - Aluno C.
+Status: M
+Turmas cursadas: 1
+	Disciplina: Introducao a Programacao, Nota: 0, Frequencia: 0, Status: M
+**************************************************************
+Imprimindo informacoes do aluno: 55555 - Aluno D.
+Status: M
+Turmas cursadas: 0
+**************************************************************
+Imprimindo informacoes do aluno: 66666 - Aluno E.
+Status: M
+Turmas cursadas: 0
+###################################################################################
+
+###################################################################################
+Imprimindo informacoes de todos as turmas do curso.
+Ha 6 turma(s) neste curso.
+**************************************************************
+Imprimindo informacoes da turma: 2001 - Introducao a Programacao.
+A turma contem 3 vagas e 3 alunos:
+	22222
+	33333
+	44444
+**************************************************************
+Imprimindo informacoes da turma: 2002 - Introducao a Analise de Algoritmos.
+A turma contem 4 vagas e 2 alunos:
+	22222
+	33333
+**************************************************************
+Imprimindo informacoes da turma: 2023 - Algoritmos e Estruturas de Dados I.
+A turma contem 5 vagas e 1 alunos:
+	22222
+**************************************************************
+Imprimindo informacoes da turma: 2024 - Algoritmos e Estruturas de Dados II.
+A turma contem 6 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2016 - Inteligencia Artificial.
+A turma contem 7 vagas e 0 alunos:
+**************************************************************
+Imprimindo informacoes da turma: 2023 - Algoritmos e Estruturas de Dados I.
+A turma contem 8 vagas e 0 alunos:
+###################################################################################
+
+
+*** Cadastrando notas ***************************************************
+23. OK
+24. OK
+25. OK
+26. OK
+27. OK
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: M
+Turmas cursadas: 3
+	Disciplina: Introducao a Programacao, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 40, Frequencia: 75, Status: R
+
+
+*** Matriculando alunos nas turmas (novamente) **************************
+28. OK
+29. OK
+30. OK
+31. OK
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: M
+Turmas cursadas: 6
+	Disciplina: Introducao a Programacao, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 40, Frequencia: 75, Status: R
+	Disciplina: Algoritmos e Estruturas de Dados II, Nota: 0, Frequencia: 0, Status: M
+	Disciplina: Inteligencia Artificial, Nota: 0, Frequencia: 0, Status: M
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 0, Frequencia: 0, Status: M
+
+
+*** Cadastrando notas (novamente) ***************************************
+32. OK
+33. OK
+34. OK
+35. OK
+36. OK
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: M
+Turmas cursadas: 6
+	Disciplina: Introducao a Programacao, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 40, Frequencia: 75, Status: R
+	Disciplina: Algoritmos e Estruturas de Dados II, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Inteligencia Artificial, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 60, Frequencia: 100, Status: A
+
+###################################################################################
+Imprimindo informacoes do curso.
+Ha 5 alunos(s) neste curso.
+Aluno: Aluno A	nusp: 22222
+Aluno: Aluno B	nusp: 33333
+Aluno: Aluno C	nusp: 44444
+Aluno: Aluno D	nusp: 55555
+Aluno: Aluno E	nusp: 66666
+
+Ha 6 turmas(s) neste curso.
+Turma: Introducao a Programacao	vagas: 3	matriculados: 3
+Turma: Introducao a Analise de Algoritmos	vagas: 4	matriculados: 2
+Turma: Algoritmos e Estruturas de Dados I	vagas: 5	matriculados: 1
+Turma: Algoritmos e Estruturas de Dados II	vagas: 6	matriculados: 1
+Turma: Inteligencia Artificial	vagas: 7	matriculados: 1
+Turma: Algoritmos e Estruturas de Dados I	vagas: 8	matriculados: 1
+###################################################################################
+
+###################################################################################
+Imprimindo informacoes de todos os turmas do curso.
+Ha 5 alunos(s) neste curso.
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: M
+Turmas cursadas: 6
+	Disciplina: Introducao a Programacao, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 40, Frequencia: 75, Status: R
+	Disciplina: Algoritmos e Estruturas de Dados II, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Inteligencia Artificial, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 60, Frequencia: 100, Status: A
+**************************************************************
+Imprimindo informacoes do aluno: 33333 - Aluno B.
+Status: M
+Turmas cursadas: 2
+	Disciplina: Introducao a Programacao, Nota: 0, Frequencia: 0, Status: M
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 0, Frequencia: 0, Status: M
+**************************************************************
+Imprimindo informacoes do aluno: 44444 - Aluno C.
+Status: M
+Turmas cursadas: 1
+	Disciplina: Introducao a Programacao, Nota: 0, Frequencia: 0, Status: M
+**************************************************************
+Imprimindo informacoes do aluno: 55555 - Aluno D.
+Status: M
+Turmas cursadas: 0
+**************************************************************
+Imprimindo informacoes do aluno: 66666 - Aluno E.
+Status: M
+Turmas cursadas: 0
+###################################################################################
+
+###################################################################################
+Imprimindo informacoes de todos as turmas do curso.
+Ha 6 turma(s) neste curso.
+**************************************************************
+Imprimindo informacoes da turma: 2001 - Introducao a Programacao.
+A turma contem 3 vagas e 3 alunos:
+	22222
+	33333
+	44444
+**************************************************************
+Imprimindo informacoes da turma: 2002 - Introducao a Analise de Algoritmos.
+A turma contem 4 vagas e 2 alunos:
+	22222
+	33333
+**************************************************************
+Imprimindo informacoes da turma: 2023 - Algoritmos e Estruturas de Dados I.
+A turma contem 5 vagas e 1 alunos:
+	22222
+**************************************************************
+Imprimindo informacoes da turma: 2024 - Algoritmos e Estruturas de Dados II.
+A turma contem 6 vagas e 1 alunos:
+	22222
+**************************************************************
+Imprimindo informacoes da turma: 2016 - Inteligencia Artificial.
+A turma contem 7 vagas e 1 alunos:
+	22222
+**************************************************************
+Imprimindo informacoes da turma: 2023 - Algoritmos e Estruturas de Dados I.
+A turma contem 8 vagas e 1 alunos:
+	22222
+###################################################################################
+
+
+*** Atualizando status **************************************************
+**************************************************************
+Imprimindo informacoes do aluno: 22222 - Aluno A.
+Status: F
+Turmas cursadas: 6
+	Disciplina: Introducao a Programacao, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Introducao a Analise de Algoritmos, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 40, Frequencia: 75, Status: R
+	Disciplina: Algoritmos e Estruturas de Dados II, Nota: 100, Frequencia: 90, Status: A
+	Disciplina: Inteligencia Artificial, Nota: 70, Frequencia: 70, Status: A
+	Disciplina: Algoritmos e Estruturas de Dados I, Nota: 60, Frequencia: 100, Status: A
