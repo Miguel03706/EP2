@@ -172,10 +172,9 @@ bool adicionarAlunoAoCurso(ALUNO *aluno, CURSO *curso)
     }
     for (int i = 0; i < curso->numAlunos; i++)
     {
-        if (curso->alunos[i] == aluno)
+        if (curso->alunos[i]->nusp == aluno->nusp)
         {
             return false;
-            break;
         }
     }
     // pega a ultima posição e add nela (começa no zero, então o numero de elementos total sempre vai ser o último)
@@ -197,7 +196,7 @@ inserida no arranjo de turmas, na posicao numTurmas e este campo (apontado por c
 1 e a funcao deve retornar true.
 */
 
-// FIXME: 1
+// FIXME: FEITO
 bool adicionarTurmaAoCurso(TURMA *turma, CURSO *curso)
 {
     /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
@@ -222,42 +221,60 @@ bool adicionarTurmaAoCurso(TURMA *turma, CURSO *curso)
 
     curso->turmas[curso->numTurmas] = turma;
     curso->numTurmas++;
+    return true;
 }
 
 /*
  Funcao para atualizar o desempenho do aluno em uma turma. Esta funcao devera retornar false caso o endereco
  recebido como parametro (aluno) tenha valor NULL ou se o parametro nota ou o parametro frequencia tenha
- valor menor do que zero ou maior do que 100.
+ valor menor do que zero ou maior do que 100. (FEITO)
  Adicionalmente, a funcao tambem devera retornar false se
  o aluno referenciado pelo parametro aluno nao possuir um DESEMPENHO em seu historico escolar (historico)
  para a disciplina com codigo igual ao valor do parametro codigoDisciplina e cujo status seja igual a 'M'
- (matriculado). 
+ (matriculado).  (TEORICAMENTE FEITO)
  Caso contrario, o respectivo DESEMPENHO dentro do historico escolar do aluno dever ser
  atualizado com a respectiva nota e frequencia (passadas como parametro) e o status do DESEMPENHO deve
  ser atualizado para 'A' em caso de aprovacao (nota maior ou igual a 50 e frequencia maior ou igual a 70)
  ou para 'R' (reprovado), caso contrario, e a funcao devera retornar true.
 */
 
-// TODO: 2
+// FIXME: FEITO (REVISAR)
 bool cadastrarNota(ALUNO *aluno, int codigoDisciplina, int nota, int freq)
 {
 
     /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
 
-    if (aluno == NULL || nota < 0 || nota > 10 || freq < 0 || freq > 100)
+    if (aluno == NULL || nota < 0 || nota > 100 || freq < 0 || freq > 100)
     {
         return false;
     }
 
-    if(aluno->historico->turma->codigoDisciplina == codigoDisciplina && aluno->historico->status == 'M'){
-        return false;
+    for (int i = 0; i < aluno->turmasNoHistorico; i++)
+    {
+        if (aluno->historico[i].turma->codigoDisciplina == codigoDisciplina &&
+            aluno->historico[i].status == 'M')
+        {
+            aluno->historico[i].nota = nota;
+            aluno->historico[i].frequencia = freq;
+
+            if (nota >= 50 && freq >= 70)
+            {
+                aluno->historico[i].status = 'A';
+            }
+            else
+            {
+                aluno->historico[i].status = 'R';
+            }
+
+            return true;
+        }
     }
 
     return false;
 }
 
 /*
-Ffuncao para atualizar o status do aluno em relacao a sua situacao geral no curso, isto e: Matriculado,
+Funcao para atualizar o status do aluno em relacao a sua situacao geral no curso, isto e: Matriculado,
 Formado ou Jubilado. Caso o numero total de disciplinas nas quais o aluno foi aprovado seja maior ou
 igual a DISCIPLINAS_NECESSARIAS, entao o campo status deve ser atualizado para 'F'. Se, por outro
 lado, o numero maximo de turmas nas quais ele pode se matricular (MAX_TURMAS) menos o numero de
