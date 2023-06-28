@@ -161,23 +161,28 @@ passado como parametro deve ser inserido no arranjo de alunos, na posicao numAlu
 // FIXME: FEITO
 bool adicionarAlunoAoCurso(ALUNO *aluno, CURSO *curso)
 {
-    /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
+    // Verificar se o aluno ou o curso são NULL
     if (aluno == NULL || curso == NULL)
     {
         return false;
     }
+
+    // Verificar se o número de alunos no curso atingiu o limite
     if (curso->numAlunos == MAX_ALUNOS_CURSO)
     {
         return false;
     }
+
+    // Verificar se o aluno já pertence ao curso com base no número USP
     for (int i = 0; i < curso->numAlunos; i++)
     {
-        if (curso->alunos[i]->nusp == aluno->nusp)
+        if (curso->alunos[i] == aluno)
         {
             return false;
         }
     }
-    // pega a ultima posição e add nela (começa no zero, então o numero de elementos total sempre vai ser o último)
+
+    // Inserir o aluno no arranjo de alunos do curso
     curso->alunos[curso->numAlunos] = aluno;
     curso->numAlunos++;
 
@@ -199,28 +204,31 @@ inserida no arranjo de turmas, na posicao numTurmas e este campo (apontado por c
 // FIXME: FEITO
 bool adicionarTurmaAoCurso(TURMA *turma, CURSO *curso)
 {
-    /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
+    // Verificar se a turma ou o curso são NULL
     if (turma == NULL || curso == NULL)
     {
         return false;
     }
 
+    // Verificar se a turma já pertence ao curso com base no endereço de memória
     for (int i = 0; i < curso->numTurmas; i++)
     {
         if (curso->turmas[i] == turma)
         {
             return false;
-            break;
-        };
+        }
     }
 
+    // Verificar se o número de turmas no curso atingiu o limite
     if (curso->numTurmas == MAX_TURMAS_CURSO)
     {
         return false;
     }
 
+    // Inserir a turma no arranjo de turmas do curso
     curso->turmas[curso->numTurmas] = turma;
     curso->numTurmas++;
+
     return true;
 }
 
@@ -241,22 +249,29 @@ bool adicionarTurmaAoCurso(TURMA *turma, CURSO *curso)
 // FIXME: FEITO (REVISAR)
 bool cadastrarNota(ALUNO *aluno, int codigoDisciplina, int nota, int freq)
 {
-
-    /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
-
-    if (aluno == NULL || nota < 0 || nota > 100 || freq < 0 || freq > 100)
+    // Verificar se o aluno é NULL
+    if (aluno == NULL)
     {
         return false;
     }
 
+    // Verificar se a nota ou a frequência estão fora do intervalo válido
+    if (nota < 0 || nota > 100 || freq < 0 || freq > 100)
+    {
+        return false;
+    }
+
+    // Verificar se o aluno possui um desempenho no histórico para a disciplina com código igual a codigoDisciplina
+    bool desempenhoEncontrado = false;
     for (int i = 0; i < aluno->turmasNoHistorico; i++)
     {
-        if (aluno->historico[i].turma->codigoDisciplina == codigoDisciplina &&
-            aluno->historico[i].status == 'M')
+        if (aluno->historico[i].turma->codigoDisciplina == codigoDisciplina && aluno->historico[i].status == 'M')
         {
+            // Atualizar o desempenho com a nota e a frequência
             aluno->historico[i].nota = nota;
             aluno->historico[i].frequencia = freq;
 
+            // Atualizar o status do desempenho
             if (nota >= 50 && freq >= 70)
             {
                 aluno->historico[i].status = 'A';
@@ -266,16 +281,24 @@ bool cadastrarNota(ALUNO *aluno, int codigoDisciplina, int nota, int freq)
                 aluno->historico[i].status = 'R';
             }
 
-            return true;
+            desempenhoEncontrado = true;
+            break;
         }
     }
 
-    return false;
+    // Retornar false se não foi encontrado um desempenho no histórico
+    if (!desempenhoEncontrado)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 /*
 Funcao para atualizar o status do aluno em relacao a sua situacao geral no curso, isto e: Matriculado,
-Formado ou Jubilado. Caso o numero total de disciplinas nas quais o aluno foi aprovado seja maior ou
+Formado ou Jubilado.
+Caso o numero total de disciplinas nas quais o aluno foi aprovado seja maior ou
 igual a DISCIPLINAS_NECESSARIAS, entao o campo status deve ser atualizado para 'F'. Se, por outro
 lado, o numero maximo de turmas nas quais ele pode se matricular (MAX_TURMAS) menos o numero de
 disciplinas nas quais ele foi reprovado for menor do que o numero de disciplinas necessarias para
@@ -286,9 +309,41 @@ possivel se formar. Por fim, caso nenhuma dessas situacoes ocorra, o status deve
 
 void atualizarStatusAluno(ALUNO *aluno)
 {
+    int somaA = 0;
+    int somaR = 0;
 
-    /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
-    return false;
+    // Verificar se o aluno é NULL
+    if (aluno == NULL)
+    {
+        return;
+    }
+
+    // Percorrer o histórico do aluno
+    for (int i = 0; i < aluno->turmasNoHistorico; i++)
+    {
+        if (aluno->historico[i].status == 'A')
+        {
+            somaA++;
+        }
+        else if (aluno->historico[i].status == 'R')
+        {
+            somaR++;
+        }
+    }
+
+    // Atualizar o status do aluno
+    if (somaA >= DISCIPLINAS_NECESSARIAS)
+    {
+        aluno->status = 'F';
+    }
+    else if ((MAX_TURMAS - somaR) < DISCIPLINAS_NECESSARIAS)
+    {
+        aluno->status = 'J';
+    }
+    else
+    {
+        aluno->status = 'M';
+    }
 }
 
 /*
@@ -298,13 +353,18 @@ para verificar o status atualizado do aluno.
     A funcao tambem devera retornar false} se o numero de alunos na turma (numAlunos) referenciada por turma for igual
     ao numero total de vagas (totalVagas) dessa turma ou se o aluno atual tiver um status geral diferente de 'M'
     (ou seja, se ja tiver se formado ou jubilado) ou se o numero de turmas no historico do aluno (turmasNoHistorico)
-    for igual a MAX_TURMAS. A funcao tambem devera retornar false caso o aluno ja estiver matriculado nessa turma
-    (isto deve ser verificado na lista de numeros USP da respectiva turma) ou estiver matriculado em outra turma da
-    mesma disciplina ou ja tenha sido aprovado nessa disciplina (e necessario verificar se ele tem um DESEMPENHO
+    for igual a MAX_TURMAS. (FEITO)
+
+    A funcao tambem devera retornar false caso o aluno ja estiver matriculado nessa turma
+    (isto deve ser verificado na lista de numeros USP da respectiva turma)
+    ou estiver matriculado em outra turma da mesma disciplina ou ja tenha
+    sido aprovado nessa disciplina (e necessario verificar se ele tem um DESEMPENHO
     em seu historico escolar nessa disciplina com status 'M' ou 'A',
-    se isso ocorrer a funcao devera retornar false)\footnote{ Note que e possivel a um aluno se matricular em
+    se isso ocorrer a funcao devera retornar false)
+    \footnote{ Note que e possivel a um aluno se matricular em
     uma nova turma de uma disciplina na qual ele ja foi reprovado (desde que ja nao esteja matriculado ou ja
-    tenha sido aprovado nessa disciplina).. Caso contrario, um novo DESEMPENHO devera ser inserido
+    tenha sido aprovado nessa disciplina)..
+    Caso contrario, um novo DESEMPENHO devera ser inserido
     (ja existe uma funcao implementada no codigo que cria e retorna um novo DESEMPENHO) no historico escolar
     do aluno (historico), na posicao turmasNoHistorico e o valor do campo turmasNoHistorico devera ser
     incrementado em um; o numero USP do aluno devera ser inserido no arranjo apontado por nusps da respectiva
@@ -315,10 +375,70 @@ para verificar o status atualizado do aluno.
 
 bool matricularAlunoEmTurma(ALUNO *aluno, TURMA *turma)
 {
+    // Verificar se o aluno ou a turma é NULL
+    if (aluno == NULL || turma == NULL)
+    {
+        return false;
+    }
 
-    /* COMPLETE A IMPLEMENTACAO DA FUNCAO */
+    // Verificar o status geral do aluno
+    atualizarStatusAluno(aluno);
+    if (aluno->status != 'M')
+    {
+        return false;
+    }
 
-    return false;
+    // Verificar se o aluno já está matriculado nessa turma
+    for (int i = 0; i < turma->numAlunos; i++)
+    {
+        if (turma->nusps[i] == aluno->nusp)
+        {
+            return false;
+        }
+    }
+
+    // Verificar se o aluno já está matriculado em outra turma da mesma disciplina
+    for (int i = 0; i < aluno->turmasNoHistorico; i++)
+    {
+        if (aluno->historico[i].turma->codigoDisciplina == turma->codigoDisciplina &&
+            (aluno->historico[i].status == 'M' || aluno->historico[i].status == 'A'))
+        {
+            return false;
+        }
+    }
+
+    // Verificar se o aluno já foi aprovado nessa disciplina
+    for (int i = 0; i < aluno->turmasNoHistorico; i++)
+    {
+        if (aluno->historico[i].turma->codigoDisciplina == turma->codigoDisciplina &&
+            aluno->historico[i].status == 'A')
+        {
+            return false;
+        }
+    }
+
+    // Verificar se o número de alunos na turma atingiu o limite de vagas
+    if (turma->numAlunos == turma->totalVagas)
+    {
+        return false;
+    }
+
+    // Verificar se o aluno já atingiu o limite de turmas
+    if (aluno->turmasNoHistorico == MAX_TURMAS)
+    {
+        return false;
+    }
+
+    // Inserir novo desempenho no histórico do aluno
+    DESEMPENHO desempenhoNovo = novoDesempenho(turma);
+    aluno->historico[aluno->turmasNoHistorico] = desempenhoNovo;
+    aluno->turmasNoHistorico++;
+
+    // Inserir número USP do aluno na turma
+    turma->nusps[turma->numAlunos] = aluno->nusp;
+    turma->numAlunos++;
+
+    return true;
 }
 
 /****** FUNCOES PARA EXIBIR DADOS DO CURSO, DAS TURMAS OU DOS ALUNOS ******/
